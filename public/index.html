@@ -473,7 +473,7 @@
     box-shadow: var(--shadow-md);
   }
 
-  /* ── Phone Demo ── */
+  /* ── Phone Demo (Multi-Phone Showcase) ── */
   .demo-section {
     text-align: center;
     padding: 120px 24px;
@@ -490,69 +490,152 @@
 
   .demo-glow {
     position: absolute;
-    width: 500px; height: 500px;
+    width: 600px; height: 600px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(108,92,231,0.2) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(108,92,231,0.15) 0%, transparent 70%);
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
   }
+  .demo-glow-2 {
+    position: absolute;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(253,121,168,0.1) 0%, transparent 70%);
+    top: 30%; left: 20%;
+    pointer-events: none;
+  }
+
+  /* Demo tabs */
+  .demo-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+  }
+  .demo-tab {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.5);
+    padding: 10px 22px;
+    border-radius: 100px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .demo-tab:hover { color: rgba(255,255,255,0.8); border-color: rgba(255,255,255,0.2); }
+  .demo-tab.active {
+    background: var(--gradient);
+    border-color: transparent;
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(108,92,231,0.4);
+  }
+
+  /* Phone row */
+  .phone-showcase {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .phone-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.16,1,0.3,1);
+  }
+  .phone-col.visible { opacity: 1; transform: translateY(0); }
+  .phone-col:nth-child(2) { transition-delay: 0.15s; }
+  .phone-col:nth-child(3) { transition-delay: 0.3s; }
+
+  .phone-col-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .phone-col-desc {
+    color: rgba(255,255,255,0.4);
+    font-size: 0.82rem;
+    max-width: 220px;
+  }
 
   .phone-mock {
-    width: 280px;
-    height: 580px;
+    width: 260px;
+    height: 540px;
     background: #1a1a2e;
-    border-radius: 44px;
+    border-radius: 40px;
     border: 3px solid rgba(255,255,255,0.1);
-    margin: 48px auto 0;
     position: relative;
     overflow: hidden;
     box-shadow: 0 40px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05);
     z-index: 1;
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s;
   }
+  .phone-mock:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 50px 100px rgba(0,0,0,0.5), 0 0 40px rgba(108,92,231,0.15);
+  }
+
   .phone-notch {
-    width: 100px; height: 28px;
+    width: 90px; height: 26px;
     background: #0c0c14;
-    border-radius: 0 0 18px 18px;
+    border-radius: 0 0 16px 16px;
     margin: 0 auto;
     position: relative;
     z-index: 2;
   }
-  .phone-screen { padding: 20px 24px; text-align: center; }
+  .phone-screen { padding: 16px 20px; text-align: center; }
 
   .phone-screen .contact-avatar {
-    width: 68px; height: 68px;
+    width: 60px; height: 60px;
     background: var(--gradient);
     border-radius: 50%;
-    margin: 20px auto 14px;
+    margin: 16px auto 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 800;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: #fff;
   }
   .phone-screen .contact-name {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
-    font-size: 1.05rem;
-    margin-bottom: 4px;
+    font-size: 0.95rem;
+    margin-bottom: 3px;
     color: #fff;
   }
   .phone-screen .contact-title {
     color: rgba(255,255,255,0.5);
-    font-size: 0.78rem;
-    margin-bottom: 22px;
+    font-size: 0.72rem;
+    margin-bottom: 18px;
   }
 
   .phone-btn {
     display: block;
     width: 100%;
-    padding: 11px;
-    margin-bottom: 8px;
-    border-radius: 12px;
-    font-size: 0.78rem;
+    padding: 10px;
+    margin-bottom: 7px;
+    border-radius: 11px;
+    font-size: 0.73rem;
     font-weight: 600;
     text-align: center;
     border: none;
@@ -567,7 +650,7 @@
     position: absolute;
     bottom: -30px; left: 50%;
     transform: translateX(-50%);
-    width: 100px; height: 100px;
+    width: 90px; height: 90px;
     border: 2px solid var(--accent);
     border-radius: 50%;
     animation: tapRing 2s ease-out infinite;
@@ -575,7 +658,7 @@
   .tap-ring::after {
     content: '';
     position: absolute;
-    inset: 12px;
+    inset: 10px;
     border: 2px solid var(--accent2);
     border-radius: 50%;
     animation: tapRing 2s ease-out infinite 0.3s;
@@ -583,6 +666,287 @@
   @keyframes tapRing {
     0% { opacity: 0.8; transform: translateX(-50%) scale(0.8); }
     100% { opacity: 0; transform: translateX(-50%) scale(1.6); }
+  }
+
+  /* ── Booking Phone Styles ── */
+  .booking-header {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    margin: -16px -20px 16px;
+    padding: 20px 20px 16px;
+    border-radius: 0;
+  }
+  .booking-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #fff;
+    margin-bottom: 2px;
+  }
+  .booking-subtitle {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.7);
+  }
+  .booking-month {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    color: #fff;
+    margin: 14px 0 8px;
+    text-align: left;
+  }
+  .booking-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 3px;
+    margin-bottom: 14px;
+  }
+  .booking-day {
+    width: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.5);
+    border-radius: 8px;
+    transition: all 0.2s;
+  }
+  .booking-day.header {
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.5px;
+  }
+  .booking-day.active { color: #fff; }
+  .booking-day.selected {
+    background: var(--gradient);
+    color: #fff;
+    font-weight: 700;
+    box-shadow: 0 2px 12px rgba(108,92,231,0.4);
+  }
+  .booking-day.today {
+    border: 1px solid rgba(108,92,231,0.4);
+    color: var(--accent2);
+  }
+  .booking-times-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.6);
+    text-align: left;
+    margin-bottom: 8px;
+  }
+  .booking-times {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .booking-time {
+    padding: 8px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.6);
+    background: rgba(255,255,255,0.03);
+    cursor: default;
+    transition: all 0.2s;
+  }
+  .booking-time.selected {
+    background: rgba(108,92,231,0.2);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .booking-confirm {
+    width: 100%;
+    padding: 11px;
+    border-radius: 100px;
+    background: var(--gradient);
+    color: #fff;
+    border: none;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    cursor: default;
+  }
+
+  /* ── Review Phone Styles ── */
+  .review-header {
+    margin: 0px -20px 0;
+    padding: 16px 20px;
+  }
+  .review-biz {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .review-biz-icon {
+    width: 40px; height: 40px;
+    background: var(--gradient);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .review-biz-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #fff;
+    text-align: left;
+  }
+  .review-biz-rating {
+    font-size: 0.68rem;
+    color: rgba(255,255,255,0.5);
+    text-align: left;
+  }
+  .review-prompt {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 20px 16px;
+    margin-bottom: 16px;
+  }
+  .review-prompt-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .review-prompt-sub {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 14px;
+  }
+  .review-stars-row {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+  .review-star {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: default;
+    transition: all 0.2s;
+  }
+  .review-star.filled {
+    background: rgba(245,158,11,0.15);
+    transform: scale(1.05);
+  }
+  .review-textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 12px;
+    color: rgba(255,255,255,0.7);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.72rem;
+    min-height: 70px;
+    resize: none;
+    outline: none;
+    margin-bottom: 12px;
+  }
+  .review-submit {
+    width: 100%;
+    padding: 10px;
+    border-radius: 100px;
+    background: linear-gradient(135deg, #f59e0b, #f97316);
+    color: #fff;
+    border: none;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    cursor: default;
+    margin-bottom: 16px;
+  }
+  .review-existing {
+    text-align: left;
+  }
+  .review-existing-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .review-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 8px;
+  }
+  .review-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+  .review-card-name {
+    font-weight: 700;
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.8);
+  }
+  .review-card-stars {
+    color: #f59e0b;
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+  }
+  .review-card-text {
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.5;
+  }
+
+  /* ── Google badge ── */
+  .google-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 100px;
+    padding: 6px 12px;
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.5);
+    margin-top: 4px;
+  }
+  .google-g {
+    font-weight: 800;
+    font-size: 0.8rem;
+    background: linear-gradient(135deg, #4285f4, #34a853, #fbbc05, #ea4335);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* ── Mobile demo tabs (show tabs, stack phones) ── */
+  @media (min-width: 769px) {
+    .demo-tabs { display: none; }
+  }
+  @media (max-width: 768px) {
+    .phone-showcase {
+      flex-direction: column;
+      align-items: center;
+      gap: 48px;
+    }
+    .phone-col { display: none; }
+    .phone-col.mobile-active { display: flex; opacity: 1; transform: none; }
+    .demo-tabs { display: flex; }
   }
 
   /* ── Pricing ── */
@@ -1097,24 +1461,121 @@
   </div>
 </section>
 
-<!-- Phone Demo -->
-<section class="demo-section reveal">
+<!-- Phone Demo — Multi-Phone Showcase -->
+<section class="demo-section reveal" id="demoSection">
   <div class="demo-glow"></div>
+  <div class="demo-glow-2"></div>
   <div class="section-label">Live Preview</div>
   <h2>What your clients see<br>when they <span style="background:linear-gradient(135deg,#a29bfe,#fd79a8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">tap</span></h2>
-  <div class="phone-mock">
-    <div class="phone-notch"></div>
-    <div class="phone-screen">
-      <div class="contact-avatar">JR</div>
-      <div class="contact-name">Jordan Rivera</div>
-      <div class="contact-title">Realtor &bull; RE/MAX Partners</div>
-      <button class="phone-btn purple">Save Contact</button>
-      <button class="phone-btn pink">View Listings</button>
-      <button class="phone-btn ghost">Leave a Google Review ★</button>
-      <button class="phone-btn ghost">Follow on Instagram</button>
-      <button class="phone-btn ghost">Book Consultation</button>
+
+  <!-- Mobile tabs -->
+  <div class="demo-tabs">
+    <button class="demo-tab active" data-tab="0">Contact</button>
+    <button class="demo-tab" data-tab="1">Booking</button>
+    <button class="demo-tab" data-tab="2">Reviews</button>
+  </div>
+
+  <div class="phone-showcase">
+
+    <!-- Phone 1: Contact Card -->
+    <div class="phone-col mobile-active" data-phone="0">
+      <div class="phone-col-label">Contact Card</div>
+      <div class="phone-mock">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="contact-avatar">JR</div>
+          <div class="contact-name">Jordan Rivera</div>
+          <div class="contact-title">Realtor &bull; RE/MAX Partners</div>
+          <button class="phone-btn purple">Save Contact</button>
+          <button class="phone-btn pink">View Listings</button>
+          <button class="phone-btn ghost">Leave a Google Review ★</button>
+          <button class="phone-btn ghost">Follow on Instagram</button>
+          <button class="phone-btn ghost">Book Consultation</button>
+        </div>
+        <div class="tap-ring"></div>
+      </div>
+      <div class="phone-col-desc">Instant contact save — no app needed</div>
     </div>
-    <div class="tap-ring"></div>
+
+    <!-- Phone 2: Booking Page -->
+    <div class="phone-col" data-phone="1">
+      <div class="phone-col-label">Booking Page</div>
+      <div class="phone-mock">
+        <div class="phone-notch"></div>
+        <div class="phone-screen" style="padding:0;">
+          <div class="booking-header">
+            <div class="booking-title">Book with Sofia</div>
+            <div class="booking-subtitle">Glow Studio — Hair & Beauty</div>
+          </div>
+          <div style="padding:0 16px 16px;">
+            <div class="booking-month">March 2026</div>
+            <div class="booking-days">
+              <div class="booking-day header">S</div><div class="booking-day header">M</div><div class="booking-day header">T</div><div class="booking-day header">W</div><div class="booking-day header">T</div><div class="booking-day header">F</div><div class="booking-day header">S</div>
+              <div class="booking-day"></div><div class="booking-day"></div><div class="booking-day"></div><div class="booking-day"></div><div class="booking-day"></div><div class="booking-day"></div><div class="booking-day active">1</div>
+              <div class="booking-day active">2</div><div class="booking-day active">3</div><div class="booking-day active">4</div><div class="booking-day active">5</div><div class="booking-day active">6</div><div class="booking-day active">7</div><div class="booking-day active">8</div>
+              <div class="booking-day active">9</div><div class="booking-day active">10</div><div class="booking-day active">11</div><div class="booking-day active">12</div><div class="booking-day active">13</div><div class="booking-day today">14</div><div class="booking-day selected">15</div>
+              <div class="booking-day active">16</div><div class="booking-day active">17</div><div class="booking-day active">18</div><div class="booking-day active">19</div><div class="booking-day active">20</div><div class="booking-day active">21</div><div class="booking-day active">22</div>
+              <div class="booking-day active">23</div><div class="booking-day active">24</div><div class="booking-day active">25</div><div class="booking-day active">26</div><div class="booking-day active">27</div><div class="booking-day active">28</div><div class="booking-day active">29</div>
+            </div>
+            <div class="booking-times-label">Available Times — Mar 15</div>
+            <div class="booking-times">
+              <div class="booking-time">9:00 AM</div>
+              <div class="booking-time selected">10:30 AM</div>
+              <div class="booking-time">1:00 PM</div>
+              <div class="booking-time">3:30 PM</div>
+            </div>
+            <button class="booking-confirm">Confirm Booking →</button>
+          </div>
+        </div>
+      </div>
+      <div class="phone-col-desc">Clients book instantly from a tap</div>
+    </div>
+
+    <!-- Phone 3: Google Review Capture -->
+    <div class="phone-col" data-phone="2">
+      <div class="phone-col-label">Review Capture</div>
+      <div class="phone-mock">
+        <div class="phone-notch"></div>
+        <div class="phone-screen" style="padding:12px 16px;">
+          <div class="review-header">
+            <div class="review-biz">
+              <div class="review-biz-icon">💈</div>
+              <div>
+                <div class="review-biz-name">FitLab Training</div>
+                <div class="review-biz-rating">★★★★★ 4.9 · 47 reviews</div>
+              </div>
+            </div>
+          </div>
+          <div class="review-prompt">
+            <div class="review-prompt-title">How was your session?</div>
+            <div class="review-prompt-sub">Tap a star to rate your experience</div>
+            <div class="review-stars-row">
+              <div class="review-star filled">★</div>
+              <div class="review-star filled">★</div>
+              <div class="review-star filled">★</div>
+              <div class="review-star filled">★</div>
+              <div class="review-star filled">★</div>
+            </div>
+          </div>
+          <textarea class="review-textarea" readonly>Derek pushed me past my limits today! Best trainer in the IE. Already seeing results after 3 weeks 💪</textarea>
+          <button class="review-submit">Post to Google →</button>
+          <div class="google-badge"><span class="google-g">G</span> Opens in Google Reviews</div>
+          <div class="review-existing" style="margin-top:12px;">
+            <div class="review-existing-title">Recent Reviews</div>
+            <div class="review-card">
+              <div class="review-card-header"><span class="review-card-name">Sarah M.</span><span class="review-card-stars">★★★★★</span></div>
+              <div class="review-card-text">Amazing experience! So easy to leave a review</div>
+            </div>
+            <div class="review-card">
+              <div class="review-card-header"><span class="review-card-name">Jake T.</span><span class="review-card-stars">★★★★★</span></div>
+              <div class="review-card-text">Best trainer in Riverside, hands down 🔥</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-col-desc">5-star reviews on autopilot</div>
+    </div>
+
   </div>
 </section>
 
@@ -1272,6 +1733,125 @@
       setTimeout(() => heroCards.style.transition = '', 600);
     });
   }
+
+  // ── Demo phone showcase animation ──────────
+  const demoSection = document.getElementById('demoSection');
+  const phoneCols = document.querySelectorAll('.phone-col');
+  if (demoSection) {
+    const phoneObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          phoneCols.forEach(col => col.classList.add('visible'));
+        }
+      });
+    }, { threshold: 0.15 });
+    phoneObs.observe(demoSection);
+  }
+
+  // ── Demo tabs (mobile) ─────────────────────
+  document.querySelectorAll('.demo-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const idx = tab.getAttribute('data-tab');
+      phoneCols.forEach(col => {
+        col.classList.remove('mobile-active');
+        if (col.getAttribute('data-phone') === idx) col.classList.add('mobile-active');
+      });
+    });
+  });
+
+  // ── Interactive hero cards ──────────────────
+  cards.forEach((card, i) => {
+    card.style.cursor = 'grab';
+    let isDragging = false, startX, startY, dragOffsetX = 0, dragOffsetY = 0;
+
+    // Individual card mouse tilt
+    card.addEventListener('mousemove', (e) => {
+      if (isDragging) return;
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      card.style.transition = 'box-shadow 0.2s';
+      card.style.boxShadow = `
+        ${-x * 20}px ${-y * 20}px 60px rgba(108,92,231,0.3),
+        0 0 20px rgba(108,92,231,0.1)
+      `;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      if (!isDragging) {
+        card.style.boxShadow = '';
+        card.style.transition = 'transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s';
+        setTimeout(() => { card.style.transition = ''; }, 400);
+      }
+    });
+
+    // Click pop
+    card.addEventListener('click', (e) => {
+      if (isDragging) return;
+      card.style.transition = 'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s';
+      card.style.boxShadow = '0 20px 60px rgba(108,92,231,0.5), 0 0 40px rgba(253,121,168,0.2)';
+      const base = card.style.transform || '';
+      card.style.transform = base + ' scale(1.1)';
+      setTimeout(() => {
+        card.style.boxShadow = '';
+        card.style.transform = base;
+        setTimeout(() => { card.style.transition = ''; }, 400);
+      }, 450);
+    });
+
+    // Drag to move
+    card.addEventListener('mousedown', (e) => {
+      isDragging = false;
+      startX = e.clientX;
+      startY = e.clientY;
+      card.style.cursor = 'grabbing';
+      card.style.zIndex = 10;
+
+      const onMove = (e2) => {
+        const dx = e2.clientX - startX;
+        const dy = e2.clientY - startY;
+        if (Math.abs(dx) > 3 || Math.abs(dy) > 3) isDragging = true;
+        if (isDragging) {
+          dragOffsetX = dx;
+          dragOffsetY = dy;
+          card.style.transition = 'none';
+          const scrollY = window.scrollY;
+          const speeds = [0.06, 0.04, 0.05];
+          const baseRotateY = [-8, 12, -12];
+          const baseRotateX = [5, -3, 4];
+          const translateZvals = [0, -40, -60];
+          const floatUp = -scrollY * speeds[i];
+          card.style.transform = `
+            ${i === 0 ? 'translateX(calc(-50% + ' + dx + 'px))' : 'translateX(' + dx + 'px)'}
+            translateY(${floatUp + dy}px)
+            rotateY(${baseRotateY[i] + dx * 0.05}deg)
+            rotateX(${baseRotateX[i] - dy * 0.05}deg)
+            translateZ(${translateZvals[i] + 20}px)
+          `;
+        }
+      };
+
+      const onUp = () => {
+        document.removeEventListener('mousemove', onMove);
+        document.removeEventListener('mouseup', onUp);
+        card.style.cursor = 'grab';
+        card.style.zIndex = '';
+        if (isDragging) {
+          // Snap back
+          card.style.transition = 'transform 0.6s cubic-bezier(0.16,1,0.3,1)';
+          dragOffsetX = 0;
+          dragOffsetY = 0;
+          // Let the scroll handler reset
+          window.dispatchEvent(new Event('scroll'));
+          setTimeout(() => { card.style.transition = ''; isDragging = false; }, 600);
+        }
+      };
+      document.addEventListener('mousemove', onMove);
+      document.addEventListener('mouseup', onUp);
+    });
+  });
 
   // ── FAQ accordion ─────────────────────────
   document.querySelectorAll('.faq-question').forEach(btn => {
