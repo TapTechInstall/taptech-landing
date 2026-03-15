@@ -1100,7 +1100,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237c3aed' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%233b82f6' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 10px;
@@ -1739,6 +1739,13 @@
 
 <!-- Scripts -->
 <script>
+  // ── Force scroll to top on page load (fixes mobile scroll restore) ──
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
+  if (window.location.hash) {
+    history.replaceState(null, '', window.location.pathname);
+  }
+
   // ── Nav scroll shadow ──────────────────────
   window.addEventListener('scroll', () => {
     document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 10);
