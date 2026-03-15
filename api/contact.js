@@ -69,7 +69,11 @@ export default async function handler(req, res) {
   }
 
   // ── Parse body ────────────────────────────
-  const { name, email, phone, service, message, _hp } = req.body || {};
+  let body = req.body;
+  if (typeof body === "string") {
+    try { body = JSON.parse(body); } catch { body = {}; }
+  }
+  const { name, email, phone, service, message, _hp } = body || {};
 
   // ── Honeypot (invisible field; bots fill it, humans don't) ──
   if (_hp) {
