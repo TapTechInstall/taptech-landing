@@ -502,6 +502,144 @@
 
   .maintenance-note strong { color: var(--accent); }
 
+  /* ── Testimonials ── */
+  .testimonials { text-align: center; }
+
+  .testimonial-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .testimonial-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    text-align: left;
+    transition: all 0.4s;
+    position: relative;
+  }
+
+  .testimonial-card:hover {
+    background: var(--bg-card-hover);
+    transform: translateY(-4px);
+    border-color: rgba(0,229,160,0.15);
+  }
+
+  .testimonial-stars {
+    color: #fbbf24;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+
+  .testimonial-text {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .testimonial-avatar {
+    width: 40px;
+    height: 40px;
+    background: var(--gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 0.85rem;
+    color: #0a0a0f;
+    flex-shrink: 0;
+  }
+
+  .testimonial-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+
+  .testimonial-role {
+    color: var(--text-dim);
+    font-size: 0.8rem;
+  }
+
+  /* ── FAQ ── */
+  .faq { text-align: center; }
+
+  .faq-grid {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-align: left;
+    padding: 24px 40px 24px 0;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s;
+  }
+
+  .faq-question:hover { color: var(--accent); }
+
+  .faq-question::after {
+    content: '+';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--accent);
+    transition: transform 0.3s;
+  }
+
+  .faq-item.open .faq-question::after {
+    transform: translateY(-50%) rotate(45deg);
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+  }
+
+  .faq-item.open .faq-answer {
+    max-height: 200px;
+    padding-bottom: 24px;
+  }
+
+  .faq-answer p {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
   /* ── Tap demo ── */
   .demo-section {
     text-align: center;
@@ -767,6 +905,7 @@
     .hero { padding-top: 120px; }
     .form-row { grid-template-columns: 1fr; }
     .contact-form-wrap { padding: 28px 20px; }
+    .testimonial-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
   }
 </style>
 </head>
@@ -933,6 +1072,75 @@
   </div>
 </section>
 
+<!-- Testimonials -->
+<section class="testimonials reveal">
+  <div class="section-label">What Clients Say</div>
+  <h2>Real results from<br><span style="background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">real businesses</span></h2>
+  <div class="testimonial-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-text">"Handed my card to a client at an open house. They tapped it, saved my contact, and left a 5-star review before they even left the property."</div>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">MR</div>
+        <div>
+          <div class="testimonial-name">Marcus R.</div>
+          <div class="testimonial-role">Real Estate Agent, Riverside</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-text">"I used to hand out 500 paper cards a month. Now I carry 10 of these and every single person saves my info. My bookings went up 40% in a month."</div>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">SL</div>
+        <div>
+          <div class="testimonial-name">Sofia L.</div>
+          <div class="testimonial-role">Hair Stylist, Corona</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-text">"My Google reviews went from 12 to 47 in two months. Clients tap the card and it takes them straight to the review page. Game changer."</div>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">DK</div>
+        <div>
+          <div class="testimonial-name">Derek K.</div>
+          <div class="testimonial-role">Personal Trainer, Moreno Valley</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq reveal">
+  <div class="section-label">FAQ</div>
+  <h2>Questions? We got you.</h2>
+  <div class="faq-grid">
+    <div class="faq-item">
+      <button class="faq-question">How does the tap card work?</button>
+      <div class="faq-answer"><p>Your client holds their phone near the card — no app needed. It instantly opens a custom page with your contact info, booking link, Google reviews, and social media. Works with all modern iPhones and Androids.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Do my clients need to download anything?</button>
+      <div class="faq-answer"><p>Nope. Zero downloads, zero apps. They just tap and everything pops up instantly in their browser. One tap to save your contact directly to their phone.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Can I change my links later?</button>
+      <div class="faq-answer"><p>Absolutely. Your tap page is fully editable. New Instagram? Different booking link? Updated phone number? We update it for you — or you can do it yourself through the dashboard.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">How fast is setup?</button>
+      <div class="faq-answer"><p>Most clients are fully set up within 24 hours. We design your card, program it, build your tap page, and ship everything to you ready to go.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">What if I lose a card?</button>
+      <div class="faq-answer"><p>No worries — replacement cards are just a few bucks each. And since your tap page lives online, all your links and info stay exactly the same on the new card.</p></div>
+    </div>
+  </div>
+</section>
+
 <!-- Contact Form -->
 <section id="contact" class="final-cta reveal">
   <div class="section-label">Ready?</div>
@@ -1012,6 +1220,16 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.15 });
   reveals.forEach(el => observer.observe(el));
+
+  // ── FAQ accordion ──────────────────────────
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
 
   // ── Contact form ──────────────────────────
   const form       = document.getElementById('contactForm');

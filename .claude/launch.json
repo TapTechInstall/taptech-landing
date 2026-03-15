@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "taptech",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "public", "-l", "3456", "--single"],
+      "port": 3456
+    }
+  ]
+}
