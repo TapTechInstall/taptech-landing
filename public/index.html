@@ -1078,7 +1078,14 @@
   .price-note {
     color: var(--text-dim);
     font-size: 0.85rem;
-    margin-bottom: 28px;
+    margin-bottom: 4px;
+  }
+  .price-monthly {
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--accent);
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
   }
   .price-features { list-style: none; margin-bottom: 32px; }
   .price-features li {
@@ -1641,27 +1648,30 @@
   <div class="pricing-grid">
     <div class="price-card">
       <div class="price-tier">Starter</div>
-      <div class="price-amount">$99</div>
+      <div class="price-amount">$149</div>
       <div class="price-note">one-time setup</div>
-      <ul class="price-features"><li>5 laser-engraved PVC cards</li><li>Contact + social links</li><li>Basic tap page</li><li>Waterproof &amp; durable</li><li>Full setup &amp; programming</li></ul>
+      <div class="price-monthly">+ $29/mo</div>
+      <ul class="price-features"><li>1 NFC card + custom tap page</li><li>Contact, socials &amp; bio</li><li>Google review link on page</li><li>Basic support Mon&ndash;Fri</li><li>Monthly review count report</li></ul>
       <button class="price-btn outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Started</button>
     </div>
     <div class="price-card featured">
       <div class="price-tier">Growth</div>
-      <div class="price-amount">$199</div>
+      <div class="price-amount">$299</div>
       <div class="price-note">one-time setup</div>
-      <ul class="price-features"><li>10 laser-engraved PVC cards</li><li>Acrylic tap stand</li><li>Google Review integration</li><li>Booking page link</li><li>Custom branded tap page</li><li>Analytics dashboard</li></ul>
+      <div class="price-monthly">+ $59/mo</div>
+      <ul class="price-features"><li>2 NFC cards + branded tap page</li><li>Booking system setup</li><li>Google Business optimization</li><li>Review collection system</li><li>Monthly ranking &amp; review report</li></ul>
       <button class="price-btn primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Started</button>
     </div>
     <div class="price-card">
       <div class="price-tier">Pro</div>
-      <div class="price-amount">$299</div>
+      <div class="price-amount">$499</div>
       <div class="price-note">one-time setup</div>
-      <ul class="price-features"><li>12 laser-engraved PVC cards</li><li>Full Google ranking setup</li><li>Multi-link tap page</li><li>Priority support</li><li>Tap stand included</li></ul>
+      <div class="price-monthly">+ $99/mo</div>
+      <ul class="price-features"><li>5 NFC cards + tap stand</li><li>Premium tap page + portfolio</li><li>Full booking system + service menu</li><li>Complete Google ranking package</li><li>Monthly strategy call + report</li></ul>
       <button class="price-btn outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Started</button>
     </div>
   </div>
-  <div class="maintenance-note">&#x1F4A1; <span>Optional <strong>$25/mo</strong> maintenance — Mon–Fri support, updates &amp; changes anytime</span></div>
+  <div class="maintenance-note">&#x1F4A1; <span>Monthly retainer covers ongoing management &mdash; tap page updates, review monitoring, booking support &amp; reporting</span></div>
 </section>
 
 <!-- Why TapTech -->
@@ -1719,7 +1729,7 @@
       </div>
       <div class="form-row">
         <div class="form-group"><label for="phone">Phone (optional)</label><input type="tel" id="phone" name="phone" placeholder="(951) 555-0100" maxlength="30" autocomplete="tel"></div>
-        <div class="form-group"><label for="service">Package Interest</label><select id="service" name="service"><option value="">Choose a plan...</option><option value="Starter — $99">Starter — $99</option><option value="Growth — $199">Growth — $199</option><option value="Pro — $299">Pro — $299</option><option value="Not sure yet">Not sure yet</option></select></div>
+        <div class="form-group"><label for="service">Package Interest</label><select id="service" name="service"><option value="">Choose a plan...</option><option value="Starter — $149 + $29/mo">Starter — $149 + $29/mo</option><option value="Growth — $299 + $59/mo">Growth — $299 + $59/mo</option><option value="Pro — $499 + $99/mo">Pro — $499 + $99/mo</option><option value="Not sure yet">Not sure yet</option></select></div>
       </div>
       <div class="form-group"><label for="message">Message *</label><textarea id="message" name="message" placeholder="Tell us about your business and what you need..." required maxlength="3000"></textarea></div>
       <button type="submit" class="form-submit" id="submitBtn">Send Message &#8594;</button>
