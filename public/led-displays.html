@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LED Window Displays for Storefronts | TapTech Connect</title>
+<meta name="description" content="Turn your storefront window into a high-visibility LED display. P10 LED film installs directly on glass. Dynamic signage for promotions, menus, and branding. Custom quotes available.">
+<meta property="og:title" content="LED Window Displays | TapTech Connect">
+<meta property="og:description" content="Transparent LED film displays for storefronts. High-visibility signage that installs directly on your existing glass. Custom sizing and installation available.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://taptechconnect.com/led-displays">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg-alt: #111118;
+    --bg-card: #16161f;
+    --text: #f0f0f5;
+    --text-dim: #8888a0;
+    --gold: #D4AF37;
+    --gold-light: #F0D060;
+    --gold-dark: #B8960C;
+    --gradient-gold: linear-gradient(135deg, #D4AF37 0%, #F0D060 50%, #D4AF37 100%);
+    --gradient-gold-text: linear-gradient(135deg, #D4AF37, #F0D060, #D4AF37);
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
+    --shadow-lg: 0 12px 40px rgba(0,0,0,0.5);
+    --shadow-gold: 0 8px 30px rgba(212,175,55,0.3);
+    --radius: 20px;
+    --border: rgba(255,255,255,0.06);
+    --border-gold: rgba(212,175,55,0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* -- Nav -- */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 14px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: box-shadow 0.3s;
+    border-bottom: 1px solid transparent;
+  }
+  nav.scrolled {
+    border-bottom-color: var(--border);
+    box-shadow: 0 1px 20px rgba(0,0,0,0.3);
+  }
+
+  .logo {
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: -0.5px;
+    color: #fff;
+    text-decoration: none;
+  }
+  .logo span {
+    background: var(--gradient-gold-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: #fff; }
+
+  .nav-cta {
+    background: var(--gradient-gold) !important;
+    color: #0a0a0f !important;
+    padding: 9px 22px;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    transition: transform 0.2s, box-shadow 0.3s;
+    text-decoration: none;
+  }
+  .nav-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-gold);
+    color: #0a0a0f !important;
+  }
+
+  /* -- Hero -- */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 160px 24px 80px;
+    overflow: hidden;
+    background: var(--bg);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 900px; height: 900px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, rgba(240,208,96,0.04) 40%, transparent 70%);
+    top: -300px; left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,175,55,0.06) 0%, transparent 60%);
+    bottom: -100px; right: -100px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .ribbon-container {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .ribbon {
+    position: absolute;
+    width: 200%;
+    filter: blur(40px);
+    opacity: 0.5;
+    mix-blend-mode: screen;
+  }
+  .ribbon-1 {
+    top: 25%; left: -50%;
+    height: 120px;
+    background: linear-gradient(90deg, transparent 0%, #D4AF37 15%, #F0D060 35%, #D4AF37 55%, #B8960C 75%, transparent 100%);
+    animation: ribbonFlow1 12s ease-in-out infinite;
+    opacity: 0.2;
+  }
+  .ribbon-2 {
+    top: 50%; left: -80%;
+    height: 80px;
+    background: linear-gradient(90deg, transparent 0%, #F0D060 20%, #D4AF37 40%, #F0D060 60%, #D4AF37 80%, transparent 100%);
+    animation: ribbonFlow2 15s ease-in-out infinite;
+    opacity: 0.15;
+  }
+  .ribbon-3 {
+    top: 70%; left: -30%;
+    height: 60px;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.5) 30%, rgba(212,175,55,0.3) 50%, rgba(255,255,255,0.5) 70%, transparent 100%);
+    animation: ribbonFlow3 18s ease-in-out infinite;
+    opacity: 0.06;
+  }
+
+  @keyframes ribbonFlow1 {
+    0% { transform: translateX(0) rotate(-2deg) scaleY(1); }
+    50% { transform: translateX(30%) rotate(1deg) scaleY(1.3); }
+    100% { transform: translateX(0) rotate(-2deg) scaleY(1); }
+  }
+  @keyframes ribbonFlow2 {
+    0% { transform: translateX(0) rotate(1deg) scaleY(1); }
+    50% { transform: translateX(40%) rotate(-2deg) scaleY(1.5); }
+    100% { transform: translateX(0) rotate(1deg) scaleY(1); }
+  }
+  @keyframes ribbonFlow3 {
+    0% { transform: translateX(0) rotate(0.5deg); }
+    50% { transform: translateX(35%) rotate(-0.5deg); }
+    100% { transform: translateX(0) rotate(0.5deg); }
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(212,175,55,0.08);
+    border: 1px solid var(--border-gold);
+    border-radius: 100px;
+    padding: 8px 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 32px;
+    animation: fadeUp 0.8s ease-out;
+    position: relative;
+    z-index: 1;
+  }
+  .badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: blink 2s ease-in-out infinite;
+    box-shadow: 0 0 8px rgba(212,175,55,0.6);
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    line-height: 1.05;
+    letter-spacing: -3px;
+    max-width: 800px;
+    margin-bottom: 28px;
+    animation: fadeUp 0.8s ease-out 0.1s both;
+    position: relative;
+    z-index: 1;
+    color: #fff;
+  }
+  h1 .gold {
+    background: var(--gradient-gold-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2.5vw, 1.15rem);
+    color: var(--text-dim);
+    max-width: 560px;
+    line-height: 1.75;
+    margin-bottom: 48px;
+    font-weight: 400;
+    animation: fadeUp 0.8s ease-out 0.2s both;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fadeUp 0.8s ease-out 0.3s both;
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-primary {
+    background: var(--gradient-gold);
+    color: #0a0a0f;
+    border: none;
+    padding: 17px 40px;
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.3s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-gold);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(212,175,55,0.3);
+    padding: 15px 38px;
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-secondary:hover {
+    background: rgba(212,175,55,0.08);
+    border-color: rgba(212,175,55,0.5);
+  }
+
+  .hero-trust {
+    margin-top: 24px;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    animation: fadeUp 0.8s ease-out 0.4s both;
+    position: relative;
+    z-index: 1;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* -- Sections -- */
+  section { padding: 120px 24px; }
+
+  .section-label {
+    font-weight: 600;
+    font-size: 0.78rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: var(--gradient-gold-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-weight: 800;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    letter-spacing: -1.5px;
+    line-height: 1.08;
+    margin-bottom: 64px;
+    color: #fff;
+  }
+
+  /* -- Stats -- */
+  .stats-section {
+    background: var(--bg-alt);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 80px 24px;
+  }
+  .stats-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    text-align: center;
+  }
+  .stat-num {
+    font-weight: 800;
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    background: var(--gradient-gold-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+  }
+  .stat-label {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  /* -- Problem / Pain -- */
+  .pain-section { text-align: center; }
+  .pain-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .pain-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 44px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s;
+    text-align: left;
+  }
+  .pain-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #ef4444, #f97316);
+    opacity: 0.6;
+  }
+  .pain-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(239,68,68,0.2);
+  }
+  .pain-icon {
+    width: 52px; height: 52px;
+    background: rgba(239,68,68,0.1);
+    border: 1px solid rgba(239,68,68,0.15);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 24px;
+    color: #ef4444;
+    font-weight: 700;
+  }
+  .pain-card h3 {
+    font-weight: 700;
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+    letter-spacing: -0.3px;
+    color: #fff;
+  }
+  .pain-card p {
+    color: var(--text-dim);
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  /* -- Features -- */
+  .features-section { text-align: center; }
+  .features-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .feature-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px 24px;
+    text-align: center;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .feature-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-gold);
+  }
+  .feature-icon {
+    width: 48px; height: 48px;
+    background: rgba(212,175,55,0.08);
+    border: 1px solid var(--border-gold);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    margin: 0 auto 16px;
+  }
+  .feature-card h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .feature-card p {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    line-height: 1.55;
+  }
+
+  /* -- Use Cases -- */
+  .usecases-section {
+    background: var(--bg-alt);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+  }
+  .usecases-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .usecase-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 36px 28px;
+    text-align: left;
+    transition: transform 0.3s ease, border-color 0.3s;
+  }
+  .usecase-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-gold);
+  }
+  .usecase-industry {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .usecase-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+    letter-spacing: -0.3px;
+  }
+  .usecase-card p {
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    line-height: 1.65;
+  }
+
+  /* -- How It Works -- */
+  .how-section {
+    text-align: center;
+  }
+  .how-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .step-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 40px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+    text-align: left;
+  }
+  .step-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    border-color: var(--border-gold);
+  }
+  .step-num {
+    font-weight: 800;
+    font-size: 4rem;
+    background: var(--gradient-gold-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0.12;
+    position: absolute;
+    top: 12px; right: 20px;
+    line-height: 1;
+  }
+  .step-card h3 {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    letter-spacing: -0.3px;
+    color: #fff;
+  }
+  .step-card p {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+
+  /* -- Pricing -- */
+  .pricing-section {
+    background: var(--bg-alt);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+  }
+  .pricing-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+  .price-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 40px 32px;
+    text-align: left;
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+  .price-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-gold);
+  }
+  .price-card.featured {
+    border-color: rgba(212,175,55,0.3);
+    box-shadow: 0 0 60px rgba(212,175,55,0.08);
+  }
+  .price-card.featured::before {
+    content: 'MOST POPULAR';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gradient-gold);
+    color: #0a0a0f;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    padding: 5px 16px;
+    border-radius: 100px;
+  }
+  .price-tier {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .price-amount {
+    font-weight: 800;
+    font-size: 2.8rem;
+    color: #fff;
+    letter-spacing: -2px;
+    margin-bottom: 4px;
+  }
+  .price-note {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    margin-bottom: 28px;
+  }
+  .price-features {
+    list-style: none;
+    margin-bottom: 32px;
+  }
+  .price-features li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .check {
+    width: 22px; height: 22px;
+    background: rgba(212,175,55,0.12);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--gold);
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+  .price-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 14px;
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s;
+    cursor: pointer;
+    border: none;
+  }
+  .price-btn.primary {
+    background: var(--gradient-gold);
+    color: #0a0a0f;
+  }
+  .price-btn.primary:hover {
+    box-shadow: var(--shadow-gold);
+    transform: translateY(-1px);
+  }
+  .price-btn.outline {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .price-btn.outline:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+  .pricing-footer {
+    margin-top: 40px;
+    padding: 20px 28px;
+    background: rgba(212,175,55,0.06);
+    border: 1px solid var(--border-gold);
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+  }
+  .pricing-footer strong {
+    color: var(--gold);
+  }
+
+  @media (max-width: 960px) {
+    .pricing-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+  }
+
+  /* -- Gallery -- */
+  .gallery-section { text-align: center; }
+  .gallery-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .gallery-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .gallery-item:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-gold);
+  }
+  .gallery-item.featured {
+    grid-column: 1 / -1;
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .gallery-item.featured img {
+    max-height: 420px;
+  }
+  .gallery-item:not(.featured) img {
+    height: 280px;
+  }
+  .gallery-caption {
+    padding: 16px 20px;
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    text-align: left;
+    border-top: 1px solid var(--border);
+  }
+  .gallery-credit {
+    margin-top: 24px;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    opacity: 0.5;
+  }
+  .gallery-credit a {
+    color: var(--text-dim);
+    text-decoration: underline;
+  }
+
+  /* -- FAQ -- */
+  .faq-section { text-align: center; }
+  .faq-list {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+  }
+  .faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 24px 0;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+  }
+  .faq-question:hover { color: var(--gold); }
+  .faq-icon {
+    font-size: 1.2rem;
+    color: var(--gold);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+    margin-left: 16px;
+  }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .faq-answer p {
+    padding: 0 0 24px;
+    color: var(--text-dim);
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+  .faq-item.open .faq-answer { max-height: 300px; }
+
+  /* -- CTA Section -- */
+  .cta-section {
+    text-align: center;
+    padding: 120px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: -200px; left: 50%;
+    transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .cta-section h2 { margin-bottom: 16px; }
+  .cta-sub {
+    color: var(--text-dim);
+    font-size: 1.05rem;
+    margin-bottom: 48px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+  .cta-methods {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .cta-method {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    transition: border-color 0.3s, transform 0.2s;
+  }
+  .cta-method:hover {
+    border-color: var(--border-gold);
+    transform: translateY(-2px);
+  }
+  .cta-method-icon {
+    width: 44px; height: 44px;
+    background: rgba(212,175,55,0.08);
+    border: 1px solid var(--border-gold);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    color: var(--gold);
+  }
+  .cta-method-text {
+    text-align: left;
+  }
+  .cta-method-label {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #fff;
+  }
+  .cta-method-detail {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    margin-top: 2px;
+  }
+
+  /* -- Big Statement -- */
+  .statement-section {
+    text-align: center;
+    padding: 100px 24px;
+    background: var(--bg-alt);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .statement {
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -1px;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.2;
+  }
+  .statement .gold {
+    background: var(--gradient-gold-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* -- Footer -- */
+  footer {
+    padding: 40px 24px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  footer p {
+    color: var(--text-dim);
+    font-size: 0.82rem;
+  }
+  footer a {
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  footer a:hover { color: var(--gold); }
+
+  /* -- Sticky Mobile CTA -- */
+  .sticky-cta {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 99;
+    padding: 12px 20px;
+    background: rgba(10,10,15,0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border-gold);
+  }
+  .sticky-cta a {
+    display: block;
+    background: var(--gradient-gold);
+    color: #0a0a0f;
+    text-align: center;
+    padding: 14px;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+  }
+
+  /* -- Scroll Reveal -- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* -- Responsive -- */
+  @media (max-width: 768px) {
+    nav { padding: 12px 20px; }
+    .nav-links a:not(.nav-cta) { display: none; }
+    section { padding: 80px 20px; }
+
+    .stats-grid { grid-template-columns: 1fr; gap: 32px; }
+    .pain-grid { grid-template-columns: 1fr; }
+    .features-grid { grid-template-columns: 1fr; gap: 12px; }
+    .how-grid { grid-template-columns: 1fr; gap: 16px; }
+    .usecases-grid { grid-template-columns: 1fr; }
+
+    .specs-card { padding: 40px 28px; }
+
+    .sticky-cta { display: block; }
+    .cta-section { padding-bottom: 100px; }
+    footer { padding-bottom: 80px; }
+
+    h1 { letter-spacing: -2px; }
+    h2 { margin-bottom: 40px; }
+
+    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-item.featured img { max-height: 240px; }
+    .gallery-item:not(.featured) img { height: 200px; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <a href="https://taptechconnect.com" class="logo">TapTech <span>Connect</span></a>
+  <div class="nav-links">
+    <a href="https://taptechconnect.com">NFC Cards</a>
+    <a href="#features">Features</a>
+    <a href="#specs">Pricing</a>
+    <a href="#contact" class="nav-cta">Get a Quote</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="ribbon-container">
+    <div class="ribbon ribbon-1"></div>
+    <div class="ribbon ribbon-2"></div>
+    <div class="ribbon ribbon-3"></div>
+  </div>
+
+  <div class="badge">New from TapTech Connect</div>
+
+  <h1>Turn your window into a <span class="gold">digital billboard.</span></h1>
+
+  <p class="hero-sub">P10 LED film installs directly on your existing glass. Show promotions, menus, branded visuals, and announcements -- visible day and night. No construction required.</p>
+
+  <div class="hero-actions">
+    <a href="#contact" class="btn-primary">Request a Custom Quote</a>
+    <a href="#features" class="btn-secondary">See How It Works</a>
+  </div>
+
+  <p class="hero-trust">Custom sizing available. Professional installation included.</p>
+</section>
+
+<!-- Stats -->
+<div class="stats-section">
+  <div class="stats-grid">
+    <div class="reveal">
+      <div class="stat-num" data-target="70" data-suffix="%">0%</div>
+      <div class="stat-label">of buying decisions are made at the storefront</div>
+    </div>
+    <div class="reveal">
+      <div class="stat-num" data-target="8" data-suffix="x">0x</div>
+      <div class="stat-label">more attention than static signage</div>
+    </div>
+    <div class="reveal">
+      <div class="stat-num" data-target="24" data-suffix="/7">0/7</div>
+      <div class="stat-label">visibility -- works day and night</div>
+    </div>
+  </div>
+</div>
+
+<!-- Pain Points -->
+<section class="pain-section">
+  <div class="section-label reveal">The Problem</div>
+  <h2 class="reveal">Your window is the most valuable ad space you already own</h2>
+
+  <div class="pain-grid">
+    <div class="pain-card reveal">
+      <div class="pain-icon">X</div>
+      <h3>Static Signs Get Ignored</h3>
+      <p>Paper signs, vinyl decals, and printed banners blend into the background. Foot traffic walks right past without a second look.</p>
+    </div>
+    <div class="pain-card reveal">
+      <div class="pain-icon">!</div>
+      <h3>Outdated Storefronts</h3>
+      <p>Your competitors are upgrading. A dull storefront signals a dull business. First impressions happen before anyone walks through the door.</p>
+    </div>
+    <div class="pain-card reveal">
+      <div class="pain-icon">?</div>
+      <h3>No Way to Update Fast</h3>
+      <p>New promotion? Seasonal menu? You have to reprint, rehang, and hope someone notices. By then the moment has passed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section class="gallery-section">
+  <div class="section-label reveal">The Display</div>
+  <h2 class="reveal">Paper-thin. Glass-mounted. Impossible to miss.</h2>
+
+  <div class="gallery-grid">
+    <div class="gallery-item featured reveal">
+      <img src="https://linstarled.com/wp-content/uploads/2025/07/transparent-window-LED-displays.jpg" alt="Transparent LED film display installed on storefront window" loading="lazy">
+      <div class="gallery-caption">Transparent LED film transforms standard glass into a high-visibility display</div>
+    </div>
+    <div class="gallery-item reveal">
+      <img src="https://linstarled.com/wp-content/uploads/2025/07/transparent-LED-film-screen-installation.jpg" alt="LED film installation process on glass" loading="lazy">
+      <div class="gallery-caption">Self-adhesive film installs directly on existing glass</div>
+    </div>
+    <div class="gallery-item reveal">
+      <img src="https://linstarled.com/wp-content/uploads/2025/08/LED-film-screen-for-retail-advertising.webp" alt="LED film screen used for retail storefront advertising" loading="lazy">
+      <div class="gallery-caption">Retail storefront with dynamic LED advertising display</div>
+    </div>
+    <div class="gallery-item reveal">
+      <img src="https://linstarled.com/wp-content/uploads/2025/07/transparent-led-film.jpg" alt="Transparent LED film product close-up" loading="lazy">
+      <div class="gallery-caption">Ultra-thin LED film -- nearly invisible when off</div>
+    </div>
+    <div class="gallery-item reveal">
+      <img src="https://linstarled.com/wp-content/uploads/2025/07/transparent-window-LED-display.jpg" alt="LED window display showing vivid content on glass" loading="lazy">
+      <div class="gallery-caption">Vivid content visible from the street in broad daylight</div>
+    </div>
+  </div>
+  <p class="gallery-credit reveal">Photos courtesy of <a href="https://linstarled.com" target="_blank" rel="noopener">Linstar LED Innovation</a></p>
+</section>
+
+<!-- Features -->
+<section class="features-section" id="features">
+  <div class="section-label reveal">Why LED Film</div>
+  <h2 class="reveal">Everything a modern storefront needs</h2>
+
+  <div class="features-grid">
+    <div class="feature-card reveal">
+      <div class="feature-icon">&#9670;</div>
+      <h3>Installs on Existing Glass</h3>
+      <p>Self-adhesive LED film bonds directly to your window. No demolition, no framing, no downtime.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">&#9733;</div>
+      <h3>High Visibility</h3>
+      <p>Bright, vivid display visible from the street in daylight and at night. Draws eyes from every direction.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">&#8634;</div>
+      <h3>Update Anytime</h3>
+      <p>Change your content from your phone or computer. New promotions go live in seconds, not days.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">&#9635;</div>
+      <h3>Dynamic Content</h3>
+      <p>Display video, animations, scrolling text, menus, and branded visuals. Static signs can't compete.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">&#9878;</div>
+      <h3>Professional Installation</h3>
+      <p>We handle everything. Measuring, custom sizing, film application, controller setup, and content upload.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">&#9670;</div>
+      <h3>Premium Street Presence</h3>
+      <p>Instantly elevates your storefront. Tells every passerby this is a business that takes itself seriously.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Use Cases -->
+<section class="usecases-section">
+  <div class="section-label reveal">Who It's For</div>
+  <h2 class="reveal">Built for businesses that depend on foot traffic</h2>
+
+  <div class="usecases-grid">
+    <div class="usecase-card reveal">
+      <div class="usecase-industry">Restaurants + Bars</div>
+      <h3>Animated menus and daily specials</h3>
+      <p>Display today's specials, happy hour deals, or seasonal menus right in the window. Update in seconds when the menu changes.</p>
+    </div>
+    <div class="usecase-card reveal">
+      <div class="usecase-industry">Salons + Barbershops</div>
+      <h3>Showcase your work and promotions</h3>
+      <p>Show off your best cuts, new services, and booking availability. A dynamic window display matches the energy inside.</p>
+    </div>
+    <div class="usecase-card reveal">
+      <div class="usecase-industry">Retail + Boutiques</div>
+      <h3>Promotions that actually get seen</h3>
+      <p>Flash sales, new arrivals, seasonal campaigns. Your window becomes a real-time marketing channel that never sleeps.</p>
+    </div>
+    <div class="usecase-card reveal">
+      <div class="usecase-industry">Real Estate Offices</div>
+      <h3>Rotating property listings</h3>
+      <p>Display listings, open house dates, and agent info on a bright, eye-catching window display. Update remotely as properties sell.</p>
+    </div>
+    <div class="usecase-card reveal">
+      <div class="usecase-industry">Auto Shops + Dealerships</div>
+      <h3>Service promotions and branded visuals</h3>
+      <p>Highlight seasonal service deals, financing offers, or inventory arrivals. Big glass windows mean maximum display area.</p>
+    </div>
+    <div class="usecase-card reveal">
+      <div class="usecase-industry">Any Street-Facing Business</div>
+      <h3>If you have a window, you have an opportunity</h3>
+      <p>Medical offices, fitness studios, dispensaries, coffee shops. Any business with street-facing glass can benefit from a dynamic display.</p>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section class="how-section">
+  <div class="section-label reveal">The Process</div>
+  <h2 class="reveal">From quote to live display</h2>
+
+  <div class="how-grid">
+    <div class="step-card reveal">
+      <div class="step-num">01</div>
+      <h3>Free Consultation</h3>
+      <p>Tell us about your space and goals. We assess your windows and recommend the best configuration.</p>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-num">02</div>
+      <h3>Custom Quote</h3>
+      <p>We measure your window and provide a detailed quote with sizing, installation, and content setup included.</p>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-num">03</div>
+      <h3>Installation</h3>
+      <p>Our team installs the LED film on your glass, sets up the controller, and configures your content management.</p>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-num">04</div>
+      <h3>Go Live</h3>
+      <p>Your display is active. Update your content from your phone anytime. We provide ongoing support if you need it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="pricing-section" id="specs">
+  <div class="section-label reveal">Pricing</div>
+  <h2 class="reveal">Installed. Configured. Ready to display.</h2>
+
+  <div class="pricing-grid">
+    <div class="price-card reveal">
+      <div class="price-tier">Window</div>
+      <div class="price-amount">$2,499</div>
+      <div class="price-note">single window display, installed</div>
+      <ul class="price-features">
+        <li><span class="check">&#10003;</span> Up to 10 sq ft of LED film</li>
+        <li><span class="check">&#10003;</span> P10 commercial-grade display</li>
+        <li><span class="check">&#10003;</span> Controller + power supply</li>
+        <li><span class="check">&#10003;</span> Wireless content management</li>
+        <li><span class="check">&#10003;</span> Professional installation</li>
+        <li><span class="check">&#10003;</span> Initial content setup</li>
+      </ul>
+      <a href="#contact" class="price-btn outline">Get a Quote</a>
+    </div>
+
+    <div class="price-card featured reveal">
+      <div class="price-tier">Storefront</div>
+      <div class="price-amount">$4,999</div>
+      <div class="price-note">full storefront display, installed</div>
+      <ul class="price-features">
+        <li><span class="check">&#10003;</span> Up to 30 sq ft of LED film</li>
+        <li><span class="check">&#10003;</span> P10 commercial-grade display</li>
+        <li><span class="check">&#10003;</span> Controller + power supply</li>
+        <li><span class="check">&#10003;</span> Wireless content management</li>
+        <li><span class="check">&#10003;</span> Professional installation</li>
+        <li><span class="check">&#10003;</span> Content design assistance</li>
+        <li><span class="check">&#10003;</span> 30-day support included</li>
+      </ul>
+      <a href="#contact" class="price-btn primary">Get a Quote</a>
+    </div>
+
+    <div class="price-card reveal">
+      <div class="price-tier">Custom</div>
+      <div class="price-amount">$7,999+</div>
+      <div class="price-note">multi-window or oversized, installed</div>
+      <ul class="price-features">
+        <li><span class="check">&#10003;</span> Custom sizing for any window</li>
+        <li><span class="check">&#10003;</span> Multi-window configurations</li>
+        <li><span class="check">&#10003;</span> Controller + power supply</li>
+        <li><span class="check">&#10003;</span> Wireless content management</li>
+        <li><span class="check">&#10003;</span> Professional installation</li>
+        <li><span class="check">&#10003;</span> Full content design package</li>
+        <li><span class="check">&#10003;</span> 60-day priority support</li>
+      </ul>
+      <a href="#contact" class="price-btn outline">Get a Quote</a>
+    </div>
+  </div>
+
+  <div class="pricing-footer reveal">
+    <span>Optional <strong>$79/mo</strong> content management -- we update your display content for you, anytime</span>
+  </div>
+</section>
+
+<!-- Big Statement -->
+<section class="statement-section">
+  <p class="statement reveal">Every person who walks past your window is a potential customer. <span class="gold">Make them stop and look.</span></p>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="section-label reveal">Common Questions</div>
+  <h2 class="reveal">Straight answers</h2>
+
+  <div class="faq-list">
+    <div class="faq-item reveal">
+      <button class="faq-question">
+        What is P10 LED film?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>P10 LED film is a thin, self-adhesive display panel that bonds directly to glass surfaces. The "P10" refers to the pixel pitch, which determines the viewing distance and resolution. It's designed for storefront and commercial window applications where high visibility from the street is the priority.</p>
+      </div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-question">
+        Will it damage my windows?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>No. The LED film adheres to the glass surface without permanent modification. It doesn't require drilling, framing, or any structural changes to your window or storefront.</p>
+      </div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-question">
+        How do I update the content?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Through a wireless controller. You can upload new images, videos, and text from your phone or computer over Wi-Fi. Changes go live immediately. We set up everything during installation and walk you through how it works.</p>
+      </div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-question">
+        How much does it cost?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Pricing depends on your window size and configuration. Every installation is custom. Contact us for a free consultation and we'll provide a detailed quote based on your specific space and goals.</p>
+      </div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-question">
+        Can I see it in person before committing?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>We can show you video demos and reference installations during your consultation. We want you to feel confident before moving forward.</p>
+      </div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-question">
+        Do you handle the installation?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Yes. We handle everything from measuring your window to installing the film, setting up the controller, and uploading your initial content. You don't need to do anything technical.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="section-label reveal">Get Started</div>
+  <h2 class="reveal">Ready to upgrade your storefront?</h2>
+  <p class="cta-sub reveal">Tell us about your space. We'll assess your windows and put together a custom quote. No pressure, no commitment.</p>
+
+  <div class="cta-methods reveal">
+    <a href="mailto:taptechinstall@gmail.com?subject=LED%20Window%20Display%20Quote%20Request&body=Hi%20TapTech%2C%0A%0AI'm%20interested%20in%20an%20LED%20window%20display%20for%20my%20business.%0A%0ABusiness%20name%3A%0ALocation%3A%0AApproximate%20window%20size%3A%0AWhat%20I'd%20like%20to%20display%3A%0A" class="cta-method">
+      <div class="cta-method-icon">@</div>
+      <div class="cta-method-text">
+        <div class="cta-method-label">Email us for a quote</div>
+        <div class="cta-method-detail">taptechinstall@gmail.com</div>
+      </div>
+    </a>
+    <a href="tel:5105700690" class="cta-method">
+      <div class="cta-method-icon">&#9742;</div>
+      <div class="cta-method-text">
+        <div class="cta-method-label">Call us directly</div>
+        <div class="cta-method-detail">(510) 570-0690</div>
+      </div>
+    </a>
+    <a href="sms:5105700690?body=Hi%20TapTech%2C%20I'm%20interested%20in%20an%20LED%20window%20display%20for%20my%20business." class="cta-method">
+      <div class="cta-method-icon">&#9993;</div>
+      <div class="cta-method-text">
+        <div class="cta-method-label">Text us</div>
+        <div class="cta-method-detail">(510) 570-0690</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p><a href="https://taptechconnect.com">TapTech Connect</a> &mdash; Helping local businesses stand out.</p>
+  <p style="margin-top:8px;">&copy; 2026 TapTech Connect. All rights reserved.</p>
+</footer>
+
+<!-- Sticky Mobile CTA -->
+<div class="sticky-cta" id="stickyCta">
+  <a href="#contact">Request a Custom Quote</a>
+</div>
+
+<script>
+  // Nav scroll
+  window.addEventListener('scroll', function() {
+    document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Scroll reveal
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(function(el) {
+    observer.observe(el);
+  });
+
+  // Counter animation
+  var counterObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var el = entry.target;
+        var target = parseInt(el.dataset.target);
+        var suffix = el.dataset.suffix || '';
+        var current = 0;
+        var step = target / 40;
+        var timer = setInterval(function() {
+          current += step;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          el.textContent = Math.floor(current) + suffix;
+        }, 30);
+        counterObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('[data-target]').forEach(function(el) {
+    counterObserver.observe(el);
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = btn.parentElement;
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i) {
+        i.classList.remove('open');
+      });
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // Sticky CTA visibility
+  var heroEl = document.querySelector('.hero');
+  var stickyEl = document.getElementById('stickyCta');
+  var stickyObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (window.innerWidth <= 768) {
+        stickyEl.style.display = entry.isIntersecting ? 'none' : 'block';
+      }
+    });
+  });
+  stickyObserver.observe(heroEl);
+</script>
+
+</body>
+</html>
