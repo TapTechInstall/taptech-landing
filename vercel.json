@@ -3,6 +3,10 @@
   "buildCommand": "",
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/led-displays", "destination": "/public/led-displays.html" },
+    { "source": "/led-displays/", "destination": "/public/led-displays.html" },
+    { "source": "/websites", "destination": "/public/websites.html" },
+    { "source": "/websites/", "destination": "/public/websites.html" },
     { "source": "/demo", "destination": "/public/demo/index.html" },
     { "source": "/demo/", "destination": "/public/demo/index.html" },
     { "source": "/(.*)", "destination": "/public/$1" }
